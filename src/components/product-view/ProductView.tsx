@@ -10,6 +10,7 @@ const ProductView: FC<IProps> = (props) => {
 
   return (
     <div className="grid grid-cols-4 gap-6">
+      <h3>Izzat</h3>
       {data?.map((item: any) => (
         <div key={item.id}>
           <div>
