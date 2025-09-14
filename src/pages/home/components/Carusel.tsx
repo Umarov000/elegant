@@ -41,7 +41,7 @@ import "swiper/swiper-bundle.css";
           <div className="w-full md:w-[40%] pr-0 md:pr-7 mt-4 md:mt-0">
             <span className="font-inter text-[#6C7275] text-[14px] md:text-[16px]">
               <b className="text-[#343839]">3legant</b> is a gift & decorations
-              store based in HCMC, Vietnam. Est since 2019.
+              store based in HCMC, Vietnam. Est since 2019..
             </span>
           </div>
         </div>
