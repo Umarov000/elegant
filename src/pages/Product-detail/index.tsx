@@ -1,13 +1,13 @@
-import React from "react";
 import Newsletter from "../../components/newsletter/Newsletter";
+import ProductPage from "./components/Details";
 
-const ProductDetails = () => {
+const ProductDetail = () => {
   return (
-    <div>
-      ProductDetails
+    <>
+      <ProductPage />
       <Newsletter />
-    </div>
+    </>
   );
 };
 
-export default React.memo(ProductDetails);
+export default ProductDetail;
