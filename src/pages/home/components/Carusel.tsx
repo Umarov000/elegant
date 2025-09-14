@@ -5,6 +5,7 @@ import swiper from "../../../assets/swiper.png";
 import { Pagination, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
+const Carusel = ()=>{
   return (
     <section>
       <div className="pb-10">
