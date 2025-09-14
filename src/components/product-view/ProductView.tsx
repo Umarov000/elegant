@@ -13,7 +13,7 @@ const ProductView: FC<IProps> = (props) => {
     <>
 
     <div className="flex justify-between items-center mb-6">
-      <h3 className="text-[40px] font-medium max-w-[149px]">New Arrivals</h3>
+      <h3 className="text-[20px] md:text-[35px] lg:text-[40px] font-medium max-w-[149px]">New Arrivals</h3>
   
         <span className="text-sm font-medium text-[#141718] cursor-pointer border-b border-[#141718] flex items-center gap-2">
         More Products <FaArrowRightLong className="text-center"/>

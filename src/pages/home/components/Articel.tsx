@@ -20,7 +20,7 @@ const Articel = () => {
   return (
     <>
       <div className="flex justify-between items-center mb-6 mt-[80px]">
-        <h3 className="text-[40px] font-medium max-w-[149px]">Articles</h3>
+        <h3 className="text-[20px] md:text-[35px] lg:text-[40px] font-medium max-w-[149px]">Articles</h3>
         {moreArticlesLink}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-[25px]">
