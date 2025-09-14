@@ -34,10 +34,18 @@
 .swiper-pagination-bullet {
   background-color: white !important;
   opacity: 0.8 !important;
+  transition: 0.3s; /* animatsiya */
 }
 
 .swiper-pagination-bullet-active {
   background-color: white !important;
   width: 24px !important;
   border-radius: 90px !important;
+}
+
+@media (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
 }
