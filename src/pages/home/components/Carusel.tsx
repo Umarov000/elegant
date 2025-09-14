@@ -30,17 +30,17 @@ const Carusel = () => {
             <img className="max-w-full" src={swiper} alt="" />
           </SwiperSlide>
         </Swiper>
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-7xl font-poppins tracking-[-2px]">
+        <div className="flex flex-col md:flex-row md:items-center text-center md:md:text-start  justify-between">
+          <div className="text-[40px] tracking-tighter leading-[44px] font-[500] sm:text-5xl md:text-7xl font-poppins md:tracking-[-2px] md:leading-[76px]">
+            <h1>
               Simply Unique<span className="text-gray-500">/</span>
             </h1>
-            <h1 className="text-7xl font-poppins tracking-[-2px]">
+            <h1>
               Simply Better<span className="text-gray-500">.</span>
             </h1>
           </div>
-          <div className="w-[40%] pr-7">
-            <span className="font-inter text-[#6C7275] text-[16px]">
+          <div className="w-full md:w-[40%] pr-0 md:pr-7 mt-4 md:mt-0">
+            <span className="font-inter text-[#6C7275] text-[14px] md:text-[16px]">
               <b className="text-[#343839]">3legant</b> is a gift & decorations
               store based in HCMC, Vietnam. Est since 2019.
             </span>
