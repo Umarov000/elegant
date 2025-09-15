@@ -4,6 +4,8 @@ import ProductDetail from "./Product-detail";
 import Notfound from "./notfound";
 import Blog from "./blog";
 import ContactUs from "./contact-us";
+import Wishes from "./wishes";
+import Cart from "./cart";
 
 const MainLayout = lazy(() => import("./layout"));
 const Home = lazy(() => import("./home"));
@@ -26,6 +28,8 @@ const AppRouter = () => {
             { path: "shop", element: <Shop /> },
             { path: "blog", element: <Blog /> },
             { path: "contact", element: <ContactUs /> },
+            { path: "wishes", element: <Wishes /> },
+            { path: "cart", element: <Cart /> },
             { path: "*", element: <Notfound /> },
           ],
         },

@@ -1,8 +1,8 @@
 import React from "react";
-import freeshipping from "../../../assets/freeshipping.svg";
-import money from "../../../assets/finance-payment.svg";
-import contactPhone from "../../../assets/contact-phone.svg";
-import secure from "../../../assets/secure.svg";
+import freeshipping from "../../assets/freeshipping.svg";
+import money from "../../assets/finance-payment.svg";
+import contactPhone from "../../assets/contact-phone.svg";
+import secure from "../../assets/secure.svg";
 
 const Service = () => {
   return (

@@ -1,9 +1,8 @@
 import { memo } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
-import shoppingBag from "../../../assets/ozodbek_shopping_bag.svg";
-import searchIcon from "../../../assets/ozodbek_search.svg";
-import profileIcon from "../../../assets/ozodbek_profile.svg";
+import { IoCartOutline } from "react-icons/io5";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -69,14 +68,14 @@ const Header = () => {
             </ul>
 
             <div className="flex gap-4 items-center">
-              <Link to={"/search"}>
-                <img src={searchIcon} alt="search" />
-              </Link>
               <Link to={"/account"}>
-                <img src={profileIcon} alt="account" />
+                <FaRegUser size={25} />
               </Link>
-              <Link to={"/shop"}>
-                <img src={shoppingBag} alt="shop" />
+              <Link to={"/wishes"}>
+                <FaRegHeart size={25} />
+              </Link>
+              <Link to={"/cart"}>
+                <IoCartOutline size={30} />
               </Link>
             </div>
           </div>
