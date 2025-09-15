@@ -7,7 +7,7 @@ import secure from "../../../assets/secure.svg";
 const Service = () => {
   return (
     <section>
-      <div className="grid grid-cols-2 gap-2 md:grid-cols-4 py-12 md:gap-6">
+      <div className="container grid grid-cols-2 gap-2 md:grid-cols-4 py-12 md:gap-6">
         <div className="bg-[#F3F5F7] py-8 md:py-12 px-4 md:px-8">
           <div>
             <img className="w-10 mb-4" src={freeshipping} alt="" />

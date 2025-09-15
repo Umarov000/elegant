@@ -8,7 +8,7 @@ import "swiper/swiper-bundle.css";
 const Carusel = ()=>{
   return (
     <section>
-      <div className="pb-10">
+      <div className="pb-10 container">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
