@@ -7,7 +7,7 @@ const Newsletter = () => {
     <div
       className="w-full h-[360px] flex items-center justify-center mt-[80px]"
       style={{
-        backgroundImage: `url(${bg})`,
+        backgroundImage: `${bg}`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
