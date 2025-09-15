@@ -1,6 +1,7 @@
 import { memo, type FC } from "react";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   data: any;
@@ -8,6 +9,11 @@ interface IProps {
 
 const ProductView: FC<IProps> = (props) => {
   const { data } = props;
+  const navigate = useNavigate()
+
+   const handleRedirect = (id: number) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <>
@@ -35,6 +41,7 @@ const ProductView: FC<IProps> = (props) => {
             className="w-full transition-transform duration-300 lg:group-hover:-translate-y-4"
           />
           <button
+          onClick={() => handleRedirect(item.id)}
             className="
               absolute left-1/2 -translate-x-1/2 bottom-0
             bg-[#141718] text-white px-6 py-2 rounded-md w-[230px]
@@ -47,6 +54,7 @@ const ProductView: FC<IProps> = (props) => {
           </button>
 
         <button
+        onClick={() => handleRedirect(item.id)}
           className="
             mt-2 block lg:hidden
             bg-[#141718] text-white px-6 py-2 rounded-md w-full
