@@ -44,14 +44,26 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/product"
+                  to="/blog"
                   className={`${
-                    pathname.startsWith("/product")
+                    pathname.startsWith("/blog")
                       ? "text-black font-medium"
                       : "text-[#6C7275]"
                   }`}
                 >
-                  Product
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={`${
+                    pathname.startsWith("/contact")
+                      ? "text-black font-medium"
+                      : "text-[#6C7275]"
+                  }`}
+                >
+                  Contact us
                 </NavLink>
               </li>
             </ul>

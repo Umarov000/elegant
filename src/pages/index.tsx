@@ -1,6 +1,9 @@
 import { lazy, memo, Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import ProductDetail from "./Product-detail";
+import Notfound from "./notfound";
+import Blog from "./blog";
+import ContactUs from "./contact-us";
 
 const MainLayout = lazy(() => import("./layout"));
 const Home = lazy(() => import("./home"));
@@ -20,8 +23,10 @@ const AppRouter = () => {
           children: [
             { index: true, element: <Home /> },
             { path: "product-detail", element: <ProductDetail /> },
-
             { path: "shop", element: <Shop /> },
+            { path: "blog", element: <Blog /> },
+            { path: "contact", element: <ContactUs /> },
+            { path: "*", element: <Notfound /> },
           ],
         },
         // private route
