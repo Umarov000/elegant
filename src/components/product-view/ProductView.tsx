@@ -1,21 +1,21 @@
 import { memo, type FC } from "react";
-import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { FaStar, FaRegStar, FaStarHalfAlt, FaHeart, FaRegHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../lib";
+import { toggleLike } from "../../lib/features/wishlistSlice";
+import { addToCart } from "../../lib/features/cartSlice";
 interface IProps {
   data: any;
 }
 
 const ProductView: FC<IProps> = (props) => {
   const { data } = props;
-  const navigate = useNavigate();
-
-  const handleRedirect = () => {
-    navigate(`/product-detail`);
-  };
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state: RootState) => state.wishlist.value);
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-6 ">
         {data?.map((item: any) => (
           <div key={item.id} className="group">
             <div className="relative overflow-hidden bg-py">
@@ -26,10 +26,20 @@ const ProductView: FC<IProps> = (props) => {
               <img
                 src={item.thumbnail}
                 alt=""
-                className="w-full transition-transform duration-300 lg:group-hover:-translate-y-4"
+                className="w-full transition-transform duration-300 lg:group-hover:-translate-y-4 bg-[#F3F5F7]"
               />
               <button
-                onClick={() => handleRedirect()}
+              onClick={() => dispatch(toggleLike(item))}
+              className="absolute top-3 right-3 cursor-pointer p-2.5 rounded-full"
+            >
+              {wishlist.some((pro) => pro.id === item.id) ? (
+                <FaHeart />
+              ) : (
+                <FaRegHeart />
+              )}
+            </button>
+              <button
+              onClick={()=> dispatch(addToCart(item))}
                 className="
               absolute left-1/2 -translate-x-1/2 bottom-0
             bg-[#141718] text-white px-6 py-2 rounded-md w-[230px]
@@ -42,7 +52,7 @@ const ProductView: FC<IProps> = (props) => {
               </button>
 
               <button
-                onClick={() => handleRedirect()}
+              onClick={()=> dispatch(addToCart(item))}
                 className="
             mt-2 block lg:hidden
             bg-[#141718] text-white px-6 py-2 rounded-md w-full

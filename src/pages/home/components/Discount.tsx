@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../../../assets/discount.png";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { GoArrowRight } from "react-icons/go";
 
 const Discount = () => {
   return (
@@ -17,8 +18,15 @@ const Discount = () => {
         <p className="text-[16px] md:text-[20px] font-normal">
           It’s more affordable than ever to give every room in your home a stylish makeover
         </p>
-        <span className="text-sm font-medium text-[#141718] cursor-pointer border-b border-[#141718] flex items-center gap-2 mt-6 mx-auto md:mx-0 max-w-[100px]">
-          Shop Now <FaArrowRightLong />
+        <span className="inline-block">
+              <a
+                href="#"
+                className="relative flex items-center gap-2 font-inter tracking-[-0.4px] text-black pb-1 
+                       after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-black 
+                       after:w-0 hover:after:w-full after:transition-all after:duration-300 w-[100px]"
+              >
+                Shop Now <GoArrowRight />
+              </a>
         </span>
       </div>
     </div>

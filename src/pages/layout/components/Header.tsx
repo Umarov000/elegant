@@ -3,9 +3,13 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../lib";
 
 const Header = () => {
   const { pathname } = useLocation();
+  const wishlist = useSelector((state: RootState) => state.wishlist.value);
+  const cart = useSelector((state: RootState) => state.cart.value);
 
   return (
     <header>
@@ -71,11 +75,21 @@ const Header = () => {
               <Link to={"/account"}>
                 <FaRegUser size={25} />
               </Link>
-              <Link to={"/wishes"}>
+              <Link to={"/wishes"} className="relative">
                 <FaRegHeart size={25} />
+                {!!wishlist.length && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-[16px] h-[16px] px-[4px] flex items-center justify-center rounded-full">
+                    {wishlist.length}
+                  </span>
+                )}
               </Link>
-              <Link to={"/cart"}>
+              <Link to={"/cart"} className="relative">
                 <IoCartOutline size={30} />
+                {!!cart.length && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-[16px] h-[16px] px-[4px] flex items-center justify-center rounded-full">
+                    {cart.length}
+                  </span>
+                )}
               </Link>
             </div>
           </div>
