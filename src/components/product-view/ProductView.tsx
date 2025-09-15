@@ -1,6 +1,7 @@
 import { memo, type FC } from "react";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   data: any;
@@ -8,6 +9,11 @@ interface IProps {
 
 const ProductView: FC<IProps> = (props) => {
   const { data } = props;
+  const navigate = useNavigate()
+
+   const handleRedirect = (id: number) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <>
@@ -32,11 +38,31 @@ const ProductView: FC<IProps> = (props) => {
           <img
             src={item.thumbnail}
             alt=""
-            className="w-full transition-transform duration-300 group-hover:-translate-y-4"
+            className="w-full transition-transform duration-300 lg:group-hover:-translate-y-4"
           />
-          <button className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full group-hover:translate-y-0 transition-all duration-300 bg-[#141718] text-white px-6 py-2 rounded-md w-[230px]">
+          <button
+          onClick={() => handleRedirect(item.id)}
+            className="
+              absolute left-1/2 -translate-x-1/2 bottom-0
+            bg-[#141718] text-white px-6 py-2 rounded-md w-[230px]
+              hidden lg:block
+              translate-y-full group-hover:translate-y-0
+              transition-all duration-300 z-20
+            "
+          >
+              Add to Cart
+          </button>
+
+        <button
+        onClick={() => handleRedirect(item.id)}
+          className="
+            mt-2 block lg:hidden
+            bg-[#141718] text-white px-6 py-2 rounded-md w-full
+          "
+          >
             Add to Cart
           </button>
+
         </div>
       
         <div className="flex flex-col gap-1 mt-3">
