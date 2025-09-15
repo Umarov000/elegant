@@ -15,6 +15,7 @@ import {
 } from "../../../lib/features/cartSlice";
 import { toggleLike } from "../../../lib/features/wishlistSlice";
 import type { RootState } from "../../../lib";
+import Loading from "./Loading";
 
 export default function ProductPage() {
   const dispatch = useDispatch();
@@ -31,7 +32,8 @@ export default function ProductPage() {
     { id: "yellow", color: "bg-yellow-500 border" },
   ];
 
-  if (loading) return <p className="text-center">Loading...</p>;
+  if (loading) return <Loading />;
+
   if (error)
     return <p className="text-center text-red-500">Error loading product</p>;
   if (!data) return null;
@@ -44,7 +46,6 @@ export default function ProductPage() {
   console.log("carts>>>", carts);
   const cartItem = carts.find((c: any) => c.id === product.id);
   const quantity = cartItem?.quantity ?? 0;
-  const stock = cartItem?.stock ?? product.stock; // cartda bo‘lmasa ham product.stock dan olamiz
 
   return (
     <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-10">
@@ -172,20 +173,14 @@ export default function ProductPage() {
                 if (cartItem) {
                   dispatch(increaseAmount(cartItem));
                 } else {
-                  dispatch(addToCart(product)); // savatchada bo‘lmasa qo‘shib qo‘yadi
+                  dispatch(addToCart(product));
                 }
               }}
               className="px-3 py-1 disabled:opacity-30 hover:bg-gray-100"
             >
               +
             </button>
-            {/* <button
-              disabled={cartItem!.quantity >= cartItem!.stock}
-              onClick={() => dispatch(increaseAmount(cartItem!))}
-              className="px-3 py-1 disabled:opacity-30 hover:bg-gray-100"
-            >
-              +
-            </button> */}
+           
           </div>
           <button
             onClick={() => dispatch(toggleLike(product))}
