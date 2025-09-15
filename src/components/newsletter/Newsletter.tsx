@@ -5,7 +5,7 @@ import { MdOutlineEmail } from "react-icons/md";
 const Newsletter = () => {
   return (
     <div
-      className="w-full h-[360px] flex items-center justify-center"
+      className="w-full h-[360px] flex items-center justify-center mt-[80px]"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
