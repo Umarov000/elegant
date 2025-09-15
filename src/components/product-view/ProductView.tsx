@@ -11,8 +11,8 @@ const ProductView: FC<IProps> = (props) => {
   const { data } = props;
   const navigate = useNavigate()
 
-   const handleRedirect = (id: number) => {
-    navigate(`/product/${id}`);
+   const handleRedirect = () => {
+    navigate(`/product-detail`);
   };
 
   return (
@@ -41,7 +41,7 @@ const ProductView: FC<IProps> = (props) => {
             className="w-full transition-transform duration-300 lg:group-hover:-translate-y-4"
           />
           <button
-          onClick={() => handleRedirect(item.id)}
+          onClick={() => handleRedirect()}
             className="
               absolute left-1/2 -translate-x-1/2 bottom-0
             bg-[#141718] text-white px-6 py-2 rounded-md w-[230px]
@@ -54,7 +54,7 @@ const ProductView: FC<IProps> = (props) => {
           </button>
 
         <button
-        onClick={() => handleRedirect(item.id)}
+        onClick={() => handleRedirect()}
           className="
             mt-2 block lg:hidden
             bg-[#141718] text-white px-6 py-2 rounded-md w-full

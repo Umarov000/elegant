@@ -12,7 +12,7 @@ const Home = () => {
   const { data } = useFetch("/products", { limit: 4 });
 
   return (
-    <div>
+    <div className="container">
       <Carusel /> {/* ELBEK */}
       <Funiture /> {/* ELBEK */}
       <ProductView data={data?.products} /> {/* IZZAT */}
