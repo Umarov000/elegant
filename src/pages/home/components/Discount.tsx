@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../../../assets/discount.png";
-import { FaArrowRightLong } from "react-icons/fa6";
+
 import { GoArrowRight } from "react-icons/go";
 
 const Discount = () => {

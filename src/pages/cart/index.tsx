@@ -2,6 +2,7 @@ import { memo, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../lib";
 import {
+  clearCart,
   decreaseAmount,
   increaseAmount,
   removeFromCart,
@@ -107,7 +108,10 @@ const Cart = () => {
               <span>${total.toFixed(2)}</span>
             </div>
 
-            <button className="mt-6 w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg transition">
+            <button
+              onClick={() => dispatch(clearCart())}
+              className="mt-6 w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg transition"
+            >
               Checkout
             </button>
           </div>
