@@ -1,9 +1,8 @@
 import { memo } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
-import shoppingBag from "../../../assets/ozodbek_shopping_bag.svg";
-import searchIcon from "../../../assets/ozodbek_search.svg";
-import profileIcon from "../../../assets/ozodbek_profile.svg";
+import { IoCartOutline } from "react-icons/io5";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -44,27 +43,39 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/product"
+                  to="/blog"
                   className={`${
-                    pathname.startsWith("/product")
+                    pathname.startsWith("/blog")
                       ? "text-black font-medium"
                       : "text-[#6C7275]"
                   }`}
                 >
-                  Product
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={`${
+                    pathname.startsWith("/contact")
+                      ? "text-black font-medium"
+                      : "text-[#6C7275]"
+                  }`}
+                >
+                  Contact us
                 </NavLink>
               </li>
             </ul>
 
             <div className="flex gap-4 items-center">
-              <Link to={"/search"}>
-                <img src={searchIcon} alt="search" />
-              </Link>
               <Link to={"/account"}>
-                <img src={profileIcon} alt="account" />
+                <FaRegUser size={25} />
               </Link>
-              <Link to={"/shop"}>
-                <img src={shoppingBag} alt="shop" />
+              <Link to={"/wishes"}>
+                <FaRegHeart size={25} />
+              </Link>
+              <Link to={"/cart"}>
+                <IoCartOutline size={30} />
               </Link>
             </div>
           </div>

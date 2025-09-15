@@ -18,7 +18,7 @@ const Articel = () => {
   );
 
   return (
-    <>
+    <div className="container">
       <div className="flex justify-between items-center mb-6 mt-[80px]">
         <h3 className="text-[20px] md:text-[35px] lg:text-[40px] font-medium max-w-[149px]">Articles</h3>
         {moreArticlesLink}
@@ -34,7 +34,7 @@ const Articel = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

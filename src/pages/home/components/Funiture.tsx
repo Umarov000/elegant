@@ -7,7 +7,7 @@ import toaster from "../../../assets/toaster.png";
 const Funiture = () => {
   return (
     <section>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
         <div
           className="row-span-2 h-[450px] md:h-[664px] p-12 bg-cover bg-center"
           style={{ backgroundImage: `url(${chair})` }}
