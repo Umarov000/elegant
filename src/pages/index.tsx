@@ -24,7 +24,7 @@ const AppRouter = () => {
           element: <MainLayout />,
           children: [
             { index: true, element: <Home /> },
-            { path: "product-detail", element: <ProductDetail /> },
+            { path: "product/:id", element: <ProductDetail /> },
             { path: "shop", element: <Shop /> },
             { path: "blog", element: <Blog /> },
             { path: "contact", element: <ContactUs /> },
