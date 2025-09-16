@@ -1,8 +1,9 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { HiMenu, HiX } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../lib";
 
@@ -11,64 +12,41 @@ const Header = () => {
   const wishlist = useSelector((state: RootState) => state.wishlist.value);
   const cart = useSelector((state: RootState) => state.cart.value);
 
+  const [open, setOpen] = useState(false);
+
+  const navLinks = [
+    { to: "/", label: "Home", active: pathname === "/" },
+    { to: "/shop", label: "Shop", active: pathname.startsWith("/shop") },
+    { to: "/blog", label: "Blog", active: pathname.startsWith("/blog") },
+    {
+      to: "/contact",
+      label: "Contact us",
+      active: pathname.startsWith("/contact"),
+    },
+  ];
+
   return (
-    <header>
+    <header className="relative z-50">
       <div className="container">
         <nav>
           <div className="flex justify-between p-[18px] items-center">
             <Link to={"/"}>
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" className="h-8" />
             </Link>
 
-            <ul className="flex h-6 gap-10 text-[#6C7275]">
-              <li>
-                <NavLink
-                  to="/"
-                  className={`${
-                    pathname === "/"
-                      ? "text-black font-medium"
-                      : "text-[#6C7275]"
-                  }`}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/shop"
-                  className={`${
-                    pathname.startsWith("/shop")
-                      ? "text-black font-medium"
-                      : "text-[#6C7275]"
-                  }`}
-                >
-                  Shop
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/blog"
-                  className={`${
-                    pathname.startsWith("/blog")
-                      ? "text-black font-medium"
-                      : "text-[#6C7275]"
-                  }`}
-                >
-                  Blog
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  className={`${
-                    pathname.startsWith("/contact")
-                      ? "text-black font-medium"
-                      : "text-[#6C7275]"
-                  }`}
-                >
-                  Contact us
-                </NavLink>
-              </li>
+            <ul className="hidden md:flex h-6 gap-10 text-[#6C7275]">
+              {navLinks.map(({ to, label, active }) => (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    className={`${
+                      active ? "text-black font-medium" : "text-[#6C7275]"
+                    }`}
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
 
             <div className="flex gap-4 items-center">
@@ -91,9 +69,49 @@ const Header = () => {
                   </span>
                 )}
               </Link>
+
+              <button className="md:hidden" onClick={() => setOpen(true)}>
+                <HiMenu size={28} />
+              </button>
             </div>
           </div>
         </nav>
+      </div>
+
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center p-4 border-b">
+          <h2 className="text-lg font-semibold">Menu</h2>
+          <button onClick={() => setOpen(false)}>
+            <HiX size={28} />
+          </button>
+        </div>
+
+        <ul className="flex flex-col gap-4 p-4">
+          {navLinks.map(({ to, label, active }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                onClick={() => setOpen(false)}
+                className={`${
+                  active ? "text-black font-medium" : "text-[#6C7275]"
+                }`}
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );

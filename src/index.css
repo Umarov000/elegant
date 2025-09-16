@@ -11,9 +11,6 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 12px;
-  padding-right: 12px;
-  box-sizing: content-box;
 }
 
 .swiper-button-prev,
@@ -34,7 +31,7 @@
 .swiper-pagination-bullet {
   background-color: white !important;
   opacity: 0.8 !important;
-  transition: 0.3s; /* animatsiya */
+  transition: 0.3s;
 }
 
 .swiper-pagination-bullet-active {
