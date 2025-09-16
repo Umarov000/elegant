@@ -2,23 +2,32 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import ProductStars from "./ProductStars";
-
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Reviews: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
+  const [likedReviews, setLikedReviews] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+
   const { id } = useParams();
   const { data, error } = useFetch("/products");
 
   if (error)
     return <p className="text-center text-red-500">Error: {String(error)}</p>;
-  
 
-  const product = data?.products?.find((p: any) => String(console.log("p>>>",p) ) === id);
+  const product = data?.products?.find((p: any) => String(p.id) === id);
   if (!product)
     return <p className="text-center text-red-500">😂😂😂😂😂😂😂😂😂</p>;
 
   const reviews = product.reviews || [];
-  
+
+  const toggleLike = (reviewId: string) => {
+    setLikedReviews((prev) => ({
+      ...prev,
+      [reviewId]: !prev[reviewId],
+    }));
+  };
 
   return (
     <div className="container w-full">
@@ -39,8 +48,20 @@ const Reviews: React.FC = () => {
                   <ProductStars rating={review.rating} />
                 </div>
                 <p className="mb-3">{review.comment}</p>
-                <div className="flex space-x-4">
-                  <button>Like</button>
+                <div className="flex gap-4.5">
+                  <div className="flex gap-1">
+                    <button
+                      onClick={() => toggleLike(review.comment)}
+                      className="hover:cursor-pointer"
+                    >
+                      Like
+                    </button>
+                    {likedReviews[review.comment] ? (
+                      <FaHeart className="mt-1 ml-0 text-red-500" />
+                    ) : (
+                      <FaRegHeart className="mt-1 ml-0" />
+                    )}
+                  </div>
                   <button>Reply</button>
                 </div>
               </div>
@@ -62,5 +83,4 @@ const Reviews: React.FC = () => {
     </div>
   );
 };
-
 export default React.memo(Reviews);
