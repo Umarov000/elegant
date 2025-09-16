@@ -1,11 +1,11 @@
 import { lazy, memo, Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import ProductDetail from "./Product-detail";
-import Notfound from "./notfound";
 import Blog from "./blog";
 import ContactUs from "./contact-us";
 import Wishes from "./wishes";
 import Cart from "./cart";
+import Notfound from "./notfound";
 
 const MainLayout = lazy(() => import("./layout"));
 const Home = lazy(() => import("./home"));
@@ -30,7 +30,6 @@ const AppRouter = () => {
             { path: "contact", element: <ContactUs /> },
             { path: "wishes", element: <Wishes /> },
             { path: "cart", element: <Cart /> },
-            { path: "*", element: <Notfound /> },
           ],
         },
         // private route
@@ -47,6 +46,7 @@ const AppRouter = () => {
         },
         // puplic route without layout
         { path: "/sign-in", element: <SignIn /> },
+        { path: "/*", element: <Notfound /> },
       ])}
     </Suspense>
   );
