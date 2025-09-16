@@ -10,7 +10,7 @@ interface ICart {
 }
 
 const initialState: ICart = {
-  value: JSON.parse(localStorage.getItem("cart") || '[]') || [],
+  value: JSON.parse(localStorage.getItem("cart") || "[]") || [],
 };
 
 export const cartSlice = createSlice({

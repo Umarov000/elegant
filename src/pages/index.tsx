@@ -6,6 +6,10 @@ import ContactUs from "./contact-us";
 import Wishes from "./wishes";
 import Cart from "./cart";
 import Notfound from "./notfound";
+import AccountPofile from "./account/components/AccountProfile";
+import AccountAddress from "./account/components/Address";
+import AccountOrders from "./account/components/AccountOrders";
+import AccountWishlist from "./account/components/AccountWIshlist";
 
 const MainLayout = lazy(() => import("./layout"));
 const Home = lazy(() => import("./home"));
@@ -40,7 +44,18 @@ const AppRouter = () => {
             {
               path: "",
               element: <MainLayout />,
-              children: [{ path: "account", element: <Account /> }],
+              children: [
+                {
+                  path: "account",
+                  element: <Account />,
+                  children: [
+                    { index: true, element: <AccountPofile /> },
+                    { path: "address", element: <AccountAddress /> },
+                    { path: "orders", element: <AccountOrders /> },
+                    { path: "wishlist", element: <AccountWishlist /> },
+                  ],
+                },
+              ],
             },
           ],
         },
