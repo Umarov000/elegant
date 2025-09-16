@@ -18,7 +18,7 @@ const NewArrivals = () => {
         </span>
       </div>
 
-      <ProductView data={data?.products} />
+      <ProductView data={data?.products} gridCols={4} />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import ProductStars from "./ProductStars";
 
+
 const Reviews: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
   const { id } = useParams();
@@ -12,11 +13,12 @@ const Reviews: React.FC = () => {
     return <p className="text-center text-red-500">Error: {String(error)}</p>;
   
 
-  const product = data?.products?.find((p: any) => String(p.id) === id);
+  const product = data?.products?.find((p: any) => String(console.log("p>>>",p) ) === id);
   if (!product)
     return <p className="text-center text-red-500">😂😂😂😂😂😂😂😂😂</p>;
 
   const reviews = product.reviews || [];
+  
 
   return (
     <div className="container w-full">

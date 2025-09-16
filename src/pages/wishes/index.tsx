@@ -8,17 +8,20 @@ const Wishes = () => {
   
   return (
     <div className="container">
-      {
-        !wishlist.length ? 
-        <div className='text-center'>
-          <img src="https://uzum.uz/static/img/hearts.cf414be.png" className='mx-auto' width={150}  alt="" />
+      {!wishlist.length ? (
+        <div className="text-center">
+          <img
+            src="https://uzum.uz/static/img/hearts.cf414be.png"
+            className="mx-auto"
+            width={150}
+            alt=""
+          />
           <p>Empty</p>
           <button></button>
-        </div> 
-        :
-        <ProductView data={wishlist}/>
-      }
-    
+        </div>
+      ) : (
+        <ProductView data={wishlist} gridCols={3} />
+      )}
     </div>
   );
 };
