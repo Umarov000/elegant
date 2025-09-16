@@ -45,7 +45,7 @@ export default function ProductPage() {
   }
   console.log("carts>>>", carts);
   const cartItem = carts.find((c: any) => c.id === product.id);
-  const quantity = cartItem?.quantity ?? 0;
+  let quantity = cartItem?.quantity ?? 0;
 
   return (
     <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-10">
@@ -173,14 +173,13 @@ export default function ProductPage() {
                 if (cartItem) {
                   dispatch(increaseAmount(cartItem));
                 } else {
-                  dispatch(addToCart(product));
+                  quantity += 1;
                 }
               }}
               className="px-3 py-1 disabled:opacity-30 hover:bg-gray-100"
             >
               +
             </button>
-           
           </div>
           <button
             onClick={() => dispatch(toggleLike(product))}
