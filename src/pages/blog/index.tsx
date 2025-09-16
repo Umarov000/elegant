@@ -1,10 +1,11 @@
 import { memo } from "react";
+import Blogcomp from "./components/blogcomp";
 
 const Blog = () => {
   return (
-    <div className="Blog">
-      <h2>Blog</h2>
-    </div>
+    <>
+      <Blogcomp />
+    </>
   );
 };
 

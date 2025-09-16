@@ -1,10 +1,11 @@
 import { memo } from 'react';
+import ContactForm from './components/contact-form';
 
 const ContactUs = () => {
   return (
-    <div className="ContactUs">
-      <h2>ContactUs</h2>
-    </div>
+   <>
+   <ContactForm/>
+   </>
   );
 };
 
