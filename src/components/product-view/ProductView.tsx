@@ -14,23 +14,30 @@ import { Link } from "react-router-dom";
 
 interface IProps {
   data: any;
+  gridCols: number;
 }
 
-const ProductView: FC<IProps> = ({ data }) => {
+const ProductView: FC<IProps> = ({ data, gridCols }) => {
   const dispatch = useDispatch();
   const wishlist = useSelector((state: RootState) => state.wishlist.value);
 
+  const gridClass =
+    gridCols === 2
+      ? "grid-cols-2"
+      : gridCols === 3
+      ? "sm:grid-cols-2 md:grid-cols-3"
+      : "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-6 ">
+    <div className={`grid gap-6 ${gridClass}`}>
       {data?.map((item: any) => (
         <div key={item.id} className="group">
           <div className="relative overflow-hidden bg-py">
             <div className="flex flex-col pl-4 pt-4 max-w-[75px] text-center uppercase font-bold gap-2 absolute z-10">
-              <span className="bg-[#FFFFFF] rounded-[4px]">new</span>
-              <span className="bg-[#38CB89] rounded-[4px]">-50%</span>
+              <span className="bg-[#FFFFFF] rounded-[4px] font-inter px-3">new</span>
+              <span className="bg-[#38CB89] rounded-[4px] font-inter text-white">-50%</span>
             </div>
 
-            {/* Link orqali productga o'tish */}
             <Link to={`/product/${item.id}`}>
               <img
                 src={item.thumbnail}
@@ -39,7 +46,6 @@ const ProductView: FC<IProps> = ({ data }) => {
               />
             </Link>
 
-            {/* wishlist tugmasi */}
             <button
               onClick={() => dispatch(toggleLike(item))}
               className="absolute top-3 right-3 cursor-pointer p-2.5 rounded-full z-20 bg-white"
@@ -51,7 +57,6 @@ const ProductView: FC<IProps> = ({ data }) => {
               )}
             </button>
 
-            {/* Add to cart button */}
             <button
               onClick={() => dispatch(addToCart(item))}
               className="
@@ -65,7 +70,7 @@ const ProductView: FC<IProps> = ({ data }) => {
               Add to Cart
             </button>
 
-            {/* <button
+            <button
               onClick={() => dispatch(addToCart(item))}
               className="
                 mt-2 block lg:hidden
@@ -73,10 +78,9 @@ const ProductView: FC<IProps> = ({ data }) => {
               "
             >
               Add to Cart
-            </button> */}
+            </button>
           </div>
 
-          {/* product info */}
           <div className="flex flex-col gap-1 mt-3">
             <div className="flex text-yellow-500">
               <FaStar />
@@ -87,7 +91,7 @@ const ProductView: FC<IProps> = ({ data }) => {
             </div>
             <Link
               to={`/product/${item.id}`}
-              className="font-semibold hover:underline"
+              className="font-semibold hover:underline font-inter"
             >
               {item.title}
             </Link>
