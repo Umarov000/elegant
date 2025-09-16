@@ -10,6 +10,10 @@ import AccountPofile from "./account/components/AccountProfile";
 import AccountAddress from "./account/components/Address";
 import AccountOrders from "./account/components/AccountOrders";
 import AccountWishlist from "./account/components/AccountWIshlist";
+import Reviews from "./Product-detail/components/Reviews";
+import Questions from "./Product-detail/components/Questions";
+import AdditionalInfo from "./Product-detail/components/AdditionalInfo";
+import SuspenseLoading from "../components/SuspenseLoading";
 
 const MainLayout = lazy(() => import("./layout"));
 const Home = lazy(() => import("./home"));
@@ -20,7 +24,7 @@ const Auth = lazy(() => import("./auth"));
 
 const AppRouter = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<SuspenseLoading />}>
       {useRoutes([
         // puplic route with layout
         {
@@ -28,7 +32,16 @@ const AppRouter = () => {
           element: <MainLayout />,
           children: [
             { index: true, element: <Home /> },
-            { path: "product/:id", element: <ProductDetail /> },
+            {
+              path: "product/:id",
+              element: <ProductDetail />,
+              children: [
+                { index: true, element: <Reviews /> },
+                { path: "reviews", element: <Reviews /> },
+                { path: "questions", element: <Questions /> },
+                { path: "additional-info", element: <AdditionalInfo /> },
+              ],
+            },
             { path: "shop", element: <Shop /> },
             { path: "blog", element: <Blog /> },
             { path: "contact", element: <ContactUs /> },
