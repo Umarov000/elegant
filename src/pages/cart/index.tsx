@@ -8,6 +8,7 @@ import {
   removeFromCart,
   type ICartProduct,
 } from "../../lib/features/cartSlice";
+import { checkout } from "../../lib/features/ordersSlice";
 
 const Cart = () => {
   const carts = useSelector((state: RootState) => state.cart.value);
@@ -109,7 +110,10 @@ const Cart = () => {
             </div>
 
             <button
-              onClick={() => dispatch(clearCart())}
+              onClick={() => {
+                dispatch(clearCart());
+                dispatch(checkout(carts));
+              }}
               className="mt-6 w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg transition"
             >
               Checkout
