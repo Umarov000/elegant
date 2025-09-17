@@ -14,6 +14,7 @@ import { TiThLarge } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
 import { TbGridDots } from "react-icons/tb";
 import Categories from "./components/Categories";
+import ProductCardSkeleton from "../../components/productLoading/ProductCardSkeleton";
 
 const Shop = () => {
   const [order, setOrder] = useState<string>("id-asc");
@@ -137,7 +138,7 @@ const Shop = () => {
 
       <ProductView data={products} gridCols={gridCols} />
 
-      {loading && <div className="text-center text-5xl">Loading...</div>}
+      {loading && <ProductCardSkeleton/>}
       {data && data?.total > skip + limit && (
         <div className="flex justify-center py-6">
           <button

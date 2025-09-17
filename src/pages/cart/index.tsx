@@ -2,13 +2,13 @@ import { memo, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../lib";
 import {
-  clearCart,
   decreaseAmount,
   increaseAmount,
   removeFromCart,
   type ICartProduct,
 } from "../../lib/features/cartSlice";
-import { checkout } from "../../lib/features/ordersSlice";
+import { Link } from "react-router-dom";
+import empty from "../../assets/empty.webp"
 
 const Cart = () => {
   const carts = useSelector((state: RootState) => state.cart.value);
@@ -104,26 +104,20 @@ const Cart = () => {
               </p>
             </div>
 
-            <div className="border-t mt-4 pt-4 flex justify-between text-lg font-bold text-gray-900">
+            <div className="border-t mt-4 pt-4 flex justify-between text-lg font-bold text-gray-900 mb-[30px]">
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
 
-            <button
-              onClick={() => {
-                dispatch(clearCart());
-                dispatch(checkout(carts));
-              }}
-              className="mt-6 w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg transition"
-            >
-              Checkout
-            </button>
+            <Link to={"/checkout"} className="px-auto bg-black hover:bg-gray-800 text-white py-3 rounded-lg transition grid place-items-center">
+  Checkout
+</Link>
           </div>
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-12">
-          <img
-            src="https://uzum.uz/static/img/shopocat.490a4a1.png"
+          <img className="min-w-[350px]"
+            src={empty}
             width={150}
             alt="Empty cart"
           />
