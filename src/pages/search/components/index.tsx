@@ -8,6 +8,7 @@ const SearchPage = () => {
   const { data, loading, error } = useFetch("/products", { limit: 100 });
 
   const filtered =
+  
     data?.products?.filter((item: any) =>
       item.title.toLowerCase().includes(query.toLowerCase())
     ) || [];
