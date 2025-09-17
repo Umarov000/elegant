@@ -1,8 +1,5 @@
 import { memo, type FC } from "react";
 import {
-  FaStar,
-  FaRegStar,
-  FaStarHalfAlt,
   FaHeart,
   FaRegHeart,
 } from "react-icons/fa";
@@ -11,6 +8,9 @@ import type { RootState } from "../../lib";
 import { toggleLike } from "../../lib/features/wishlistSlice";
 import { addToCart } from "../../lib/features/cartSlice";
 import { Link } from "react-router-dom";
+import Star from "../../hooks/useStart";
+
+
 
 interface IProps {
   data: any;
@@ -82,13 +82,9 @@ const ProductView: FC<IProps> = ({ data, gridCols }) => {
           </div>
 
           <div className="flex flex-col gap-1 mt-3">
-            <div className="flex text-yellow-500">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStarHalfAlt />
-              <FaRegStar />
-            </div>
+            {/* ⭐ Dinamik reyting */}
+            <Star rating={item.rating} />
+
             <Link
               to={`/product/${item.id}`}
               className="font-semibold hover:underline font-inter"
