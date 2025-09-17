@@ -4,14 +4,26 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className="NotFound h-screen w-full grid place-items-center justify-center gap-15">
-      <img src={notFound} alt="" />
-      <p className="font-mono text-9xl text-center">404 Not found</p>
+    <div className="h-screen w-full flex flex-col justify-center items-center gap-6 bg-gray-50 px-4">
+      <img
+        src={notFound}
+        alt="Not found"
+        className="max-w-[400px] w-full object-contain"
+      />
+
+      <p className="font-mono text-4xl md:text-6xl lg:text-8xl text-gray-800 text-center">
+        404 - Page Not Found
+      </p>
+
       <Link
         to="/"
-        className="bg-blue-400 px-15 py-4 rounded-full text-3xl text-white hover:bg-blue-700 active:border-blue-950 mb-20"
+        className="hover:cursor-pointer
+          mt-4 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 
+          px-8 py-3 rounded-full text-white text-lg md:text-xl font-semibold 
+          transition-colors duration-200
+        "
       >
-        Home Page
+        Go Back Home
       </Link>
     </div>
   );

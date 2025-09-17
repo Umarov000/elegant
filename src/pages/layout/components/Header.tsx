@@ -2,6 +2,7 @@ import { memo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import { IoCartOutline } from "react-icons/io5";
+import { IoMdSearch} from "react-icons/io";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useSelector } from "react-redux";
@@ -50,6 +51,9 @@ const Header = () => {
             </ul>
 
             <div className="flex gap-4 items-center">
+              <Link to={"/search"}>
+                <IoMdSearch size={33} />
+              </Link>
               <Link to={"/account"}>
                 <FaRegUser size={25} />
               </Link>

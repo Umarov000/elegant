@@ -14,6 +14,7 @@ import Reviews from "./Product-detail/components/Reviews";
 import Questions from "./Product-detail/components/Questions";
 import AdditionalInfo from "./Product-detail/components/AdditionalInfo";
 import SuspenseLoading from "../components/SuspenseLoading";
+import Search from "./search";
 
 const MainLayout = lazy(() => import("./layout"));
 const Home = lazy(() => import("./home"));
@@ -43,6 +44,7 @@ const AppRouter = () => {
               ],
             },
             { path: "shop", element: <Shop /> },
+            { path: "search", element: < Search/> },
             { path: "blog", element: <Blog /> },
             { path: "contact", element: <ContactUs /> },
             { path: "wishes", element: <Wishes /> },
