@@ -1,12 +1,15 @@
-import { memo } from 'react';
-import ContactForm from './components/contact-form';
+import ContactHero from "./components/ContactHero";
+import ContactService from "./components/ContactService";
+import ContactUsCom from "./components/ContactUsCom";
 
 const ContactUs = () => {
   return (
-   <>
-   <ContactForm/>
-   </>
+    <>
+      <ContactHero />
+      <ContactUsCom />
+      <ContactService />
+    </>
   );
 };
 
-export default memo(ContactUs);
+export default ContactUs;
