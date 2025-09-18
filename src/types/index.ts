@@ -37,3 +37,22 @@ export interface IProduct {
   images: string[];
   thumbnail: string;
 }
+
+
+
+export interface FormData {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  streetAddress: string;
+  country: string;
+  town: string;
+  state: string;
+  zipCode: string;
+  useDifferentBilling: boolean;
+  paymentMethod: 'card' | 'paypal';
+  cardNumber: string;
+  expirationDate: string;
+  cvc: string;
+}

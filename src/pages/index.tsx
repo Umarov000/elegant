@@ -14,6 +14,7 @@ import Reviews from "./Product-detail/components/Reviews";
 import Questions from "./Product-detail/components/Questions";
 import AdditionalInfo from "./Product-detail/components/AdditionalInfo";
 import SuspenseLoading from "../components/SuspenseLoading";
+import Checkout from "./checkout/Checkout";
 import Search from "./search";
 
 const MainLayout = lazy(() => import("./layout"));
@@ -49,6 +50,7 @@ const AppRouter = () => {
             { path: "contact", element: <ContactUs /> },
             { path: "wishes", element: <Wishes /> },
             { path: "cart", element: <Cart /> },
+            { path: "checkout", element: <Checkout /> }
           ],
         },
         // private route

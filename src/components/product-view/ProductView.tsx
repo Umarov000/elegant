@@ -9,6 +9,8 @@ import { toggleLike } from "../../lib/features/wishlistSlice";
 import { addToCart } from "../../lib/features/cartSlice";
 import { Link } from "react-router-dom";
 import Star from "../../hooks/useStart";
+import ProductCardSkeleton from "../productLoading/ProductCardSkeleton";
+
 
 
 
@@ -30,7 +32,11 @@ const ProductView: FC<IProps> = ({ data, gridCols }) => {
 
   return (
     <div className={`grid gap-6 ${gridClass}`}>
-      {data?.map((item: any) => (
+      {
+        !data
+        ?Array.from({ length: 8 }).map((_, i) => <ProductCardSkeleton key={i} />)
+        :
+      data?.map((item: any) => (
         <div key={item.id} className="group">
           <div className="relative overflow-hidden bg-py">
             <div className="flex flex-col pl-4 pt-4 max-w-[75px] text-center uppercase font-bold gap-2 absolute z-10">
@@ -59,7 +65,7 @@ const ProductView: FC<IProps> = ({ data, gridCols }) => {
 
             <button
               onClick={() => dispatch(addToCart(item))}
-              className="
+              className=" hover:bg-gray-800
                 absolute left-1/2 -translate-x-1/2 bottom-0
                 bg-[#141718] text-white px-6 py-2 rounded-md w-[230px]
                 hidden lg:block
@@ -73,7 +79,7 @@ const ProductView: FC<IProps> = ({ data, gridCols }) => {
             <button
               onClick={() => dispatch(addToCart(item))}
               className="
-                mt-2 block lg:hidden
+                mt-2 block lg:hidden hover:bg-gray-800
                 bg-[#141718] text-white px-6 py-2 rounded-md w-full
               "
             >
@@ -82,7 +88,6 @@ const ProductView: FC<IProps> = ({ data, gridCols }) => {
           </div>
 
           <div className="flex flex-col gap-1 mt-3">
-            {/* ⭐ Dinamik reyting */}
             <Star rating={item.rating} />
 
             <Link
@@ -94,7 +99,11 @@ const ProductView: FC<IProps> = ({ data, gridCols }) => {
             <h3 className="font-semibold">${item.price}</h3>
           </div>
         </div>
-      ))}
+      ))
+      }
+
+
+      
     </div>
   );
 };

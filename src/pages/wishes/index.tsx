@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../lib';
 import ProductView from '../../components/product-view/ProductView';
+import empty from "../../assets/empty.webp"
 
 const Wishes = () => {
   const wishlist = useSelector((state: RootState) => state.wishlist.value)
@@ -10,13 +11,12 @@ const Wishes = () => {
     <div className="container">
       {!wishlist.length ? (
         <div className="text-center">
-          <img
-            src="https://uzum.uz/static/img/hearts.cf414be.png"
-            className="mx-auto"
+          <img 
+            src={empty}
+            className="min-w-[350px] mx-auto"
             width={150}
             alt=""
           />
-          <p>Empty</p>
           <button></button>
         </div>
       ) : (
